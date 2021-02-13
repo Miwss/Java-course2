@@ -52,6 +52,8 @@ public class List implements Comparable<LinkedList> {
        }
     }
 
+
+
     //    public void sort(List value){
 //        int i;
 //        LinkedList temp = new LinkedList(value);

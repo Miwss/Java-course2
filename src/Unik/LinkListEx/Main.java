@@ -19,7 +19,6 @@ public class Main{
         l1.print();
 
         System.out.println("++++++++++++++++++");
-        Collections.sort();
         l1.print();
 
 
