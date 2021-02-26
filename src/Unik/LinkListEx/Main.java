@@ -11,6 +11,7 @@ public class Main{
 
 
     public static void main(String[] args) {
+
         List l1 = new List();
         l1.add(321);
         l1.add(1231);
@@ -19,6 +20,7 @@ public class Main{
         l1.print();
 
         System.out.println("++++++++++++++++++");
+        //l1.sort(l1);
         l1.print();
 
 
