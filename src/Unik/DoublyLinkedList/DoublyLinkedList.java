@@ -80,7 +80,7 @@ public class DoublyLinkedList {
             length++;
         }
         public void LastMaxValue(){
-            insertLast(getMaxValue());
+        insertLast(getMaxValue());
         }
         public ListNode removeElements(int val){
             while (head!=null && head.data == val){

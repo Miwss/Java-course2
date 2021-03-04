@@ -37,7 +37,7 @@ public class CocktailSort
                     int temp = a[i];
                     a[i] = a[i + 1];
                     a[i + 1] = temp;
-                    //count++;5
+                    //count++;
                     swapped = true;
                 }
             }
@@ -74,7 +74,7 @@ public class CocktailSort
         System.out.println("Отсортированый массив: ");
         ob.printArray(a);
 
-
+//Проверка на время выполнения
         Instant starts = Instant.now();
         Thread.sleep(10);
         Instant ends = Instant.now();
