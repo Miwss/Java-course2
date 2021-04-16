@@ -1,74 +1,142 @@
-package Unik.Tree;
-
-public class Binarytree
-{
-    private static Node root;
-
-    public Binarytree(int data)
-    {
-        root = new Node(data);
-    }
-
-    public void add(Node parent, Node child, String orientation)
-    {
-        if (orientation.equals("left"))
-        {
-            parent.setLeft(child);
-        }
-        else
-        {
-            parent.setRight(child);
-        }
-    }
-
-    public static void main(String args[])
-    {
-        Node n1 = new Node(1);
-        Node n2 = new Node(4);
-        Node n3 = new Node(2);
-        Node n4 = new Node(5);
-
-        Binarytree tree = new Binarytree(3); //  3
-        tree.add(root, n1, "left"); //         1/ \
-        tree.add(root, n2, "right"); //            4
-        tree.add(n2, n3, "left"); //             2/ \
-        tree.add(n2, n4, "right"); //                5
-    }
-}
-
-class Node {
-    private int key;
-    private Node left;
-    private Node right;
-
-    Node (int key) {
-        this.key = key;
-        right = null;
-        left = null;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setLeft(Node left) {
-        this.left = left;
-    }
-
-    public Node getLeft() {
-        return left;
-    }
-
-    public void setRight(Node right ) {
-        this.right = right;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-
-}
+//package Unik.Tree;
+//
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.Comparator;
+//import java.util.Random;
+//import java.util.Stack;
+//
+//class Tournament<T> {
+//    Comparator<T> comparator;
+//    T[] array;
+//    int[] matches;
+//    int tourney;
+//
+//    Tournament(Comparator<T> comparator, T[] v) {
+//        this.array      = v;
+//        this.matches    = new int[6 * v.length];
+//        this.comparator = comparator;
+//        this.tourney    = knockout(0, v.length - 1, 3);
+//    }
+//
+//    public T pop() {
+//        T result = array[getPlayer(tourney)];
+//        tourney = isPlayer(tourney) ? 0 : rebuild(tourney);
+//        return result;
+//    }
+//
+//    public static <T> void sort(T[] v, Comparator<T>  comparator) {
+//        Tournament<T> tourney = new Tournament<T>(comparator, v);
+//        ArrayList<T> copy = new ArrayList<T>(v.length);
+//        for (int i = 0; i < v.length; i++) {
+//            copy.add(tourney.pop());
+//        }
+//        copy.toArray(v);
+//    }
+//
+//    private int getPlayer(int i) {
+//        return i <= 0 ? Math.abs(i) : getWinner(i);
+//    }
+//
+//    private void setWinner(int root, int winner) {
+//        matches[root] = winner;
+//    }
+//
+//    private void setWinners(int root, int winners) {
+//        matches[root + 1] = winners;
+//    }
+//
+//    private void setLosers(int root, int losers) {
+//        matches[root + 2] = losers;
+//    }
+//
+//    private int getWinner(int root) {
+//        return matches[root];
+//    }
+//
+//    private int getWinners(int root) {
+//        return matches[root + 1];
+//    }
+//
+//    private int getLosers(int root) {
+//        return matches[root + 2];
+//    }
+//
+//    private void setMatch(int root, int winner, int winners, int losers) {
+//        matches[root]   = winner;
+//        matches[root + 1] = winners;
+//        matches[root + 2] = losers;
+//    }
+//
+//    private int mkMatch(int top, int bot, int root) {
+//        int topWinner = getPlayer(top);
+//        int botWinner = getPlayer(bot);
+//        if (comparator.compare(array[topWinner], array[botWinner]) <= 0) {
+//            setMatch(root, topWinner, top, bot);
+//        } else {
+//            setMatch(root, botWinner, bot, top);
+//        }
+//        return root;
+//    }
+//
+//    private int mkPlayer(int i) {
+//        return -i;
+//    }
+//
+//    private int knockout(int i, int k, int root) {
+//        if (i == k) {
+//            return mkPlayer(i);
+//        }
+//        int j = (i + k) / 2;
+//        return mkMatch(knockout(i, j, 2 * root), knockout(j + 1, k, 2 * root + 3), root);
+//    }
+//
+//    private boolean isPlayer(int i) {
+//        return i <= 0;
+//    }
+//
+//    public String toString(int root) {
+//        return isPlayer(root)
+//                ? "[" + array[-root] + "]"
+//                : "(" + toString(getLosers(root))
+//                + " " + array[getWinner(root)] + " "
+//                + toString(getWinners(root)) + ")";
+//    }
+//
+//    public int rebuild(int root) {
+//        if (isPlayer(getWinners(root))) {
+//            return getLosers(root);
+//        } else {
+//            setWinners(root, rebuild(getWinners(root)));
+//            if (comparator.compare(array[getPlayer(getLosers(root))],
+//                    array[getPlayer(getWinners(root))]) < 0) {
+//                setWinner(root, getPlayer(getLosers(root)));
+//                int temp = getLosers(root);
+//                setLosers(root, getWinners(root));
+//                setWinners(root, temp);
+//            } else {
+//                setWinner(root, getPlayer(getWinners(root)));
+//            }
+//            return root;
+//        }
+//    }
+//
+//
+//
+//
+//    static class InstrumentedCompare implements Comparator<Integer> {
+//        public int count = 0;
+//
+//        public int compare(Integer a, Integer b) {
+//            count++;
+//            return a.compareTo(b);
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        int n = args.length >= 1 ? Integer.parseInt(args[0]) : 100000;
+//        final InstrumentedCompare tournamentCompare = new InstrumentedCompare();
+//        final Integer[] nums = randomInts(n);
+//
+//        }
+//    }

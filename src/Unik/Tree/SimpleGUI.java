@@ -35,9 +35,16 @@ public class SimpleGUI extends JFrame{
         container.add(button);
     }
 
+    //Пишем всю реализацию тут, все что будет выведено.
     class ButtonEventListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+//            int i = 0;
+//            while(i < 10){
+//                i++;
+////                JOptionPane.showMessageDialog( null,i);
+//            }
+//            JOptionPane.showMessageDialog( null,i);
             String message = "";
 
             message += "Button was pressed\n";
